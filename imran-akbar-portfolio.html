@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional portfolio website for Imran Akbar, Digital Marketer specializing in SEO, Google Ads, Meta Ads, and growth marketing." />
+  <title>Imran Akbar | Digital Marketer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy: #0A1628;
+      --navy-soft: #0f2038;
+      --navy-card: rgba(14, 29, 51, 0.78);
+      --teal: #00D4B8;
+      --teal-soft: rgba(0, 212, 184, 0.14);
+      --white: #FFFFFF;
+      --slate: #8892A4;
+      --line: rgba(255, 255, 255, 0.1);
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.26);
+      --radius: 24px;
+      --container: 1180px;
+      --nav-height: 78px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(0, 212, 184, 0.16), transparent 34rem),
+        radial-gradient(circle at bottom right, rgba(0, 212, 184, 0.08), transparent 28rem),
+        var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.78), transparent 82%);
+      z-index: -3;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: min(100% - 36px, var(--container));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 112px 0;
+      position: relative;
+    }
+
+    .section-gradient {
+      background: linear-gradient(135deg, rgba(0, 212, 184, 0.055), rgba(10, 22, 40, 0) 52%);
+    }
+
+    .section-label {
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(2.1rem, 4.4vw, 3.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      margin-bottom: 18px;
+    }
+
+    .section-copy {
+      max-width: 720px;
+      color: var(--slate);
+      font-size: 1.04rem;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 22, 40, 0.72);
+      backdrop-filter: blur(18px);
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(0, 212, 184, 0.2), rgba(0, 212, 184, 0.04));
+      border: 1px solid rgba(0, 212, 184, 0.24);
+      color: var(--teal);
+      box-shadow: 0 0 30px rgba(0, 212, 184, 0.16);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--slate);
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: color 0.25s ease, background 0.25s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--white);
+      background: rgba(0, 212, 184, 0.12);
+    }
+
+    .nav-cta {
+      display: none;
+      color: var(--navy);
+      background: var(--teal);
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 0 26px rgba(0, 212, 184, 0.28);
+    }
+
+    .mobile-menu-btn {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.035);
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: calc(var(--nav-height) + 10px);
+      left: 18px;
+      right: 18px;
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border-radius: 22px;
+      background: rgba(10, 22, 40, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      transform: translateY(-12px);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.25s ease;
+      z-index: 999;
+    }
+
+    .mobile-menu.open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: var(--slate);
+      font-weight: 700;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      color: var(--white);
+      background: rgba(0, 212, 184, 0.12);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding-top: var(--nav-height);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 212, 184, 0.22), transparent 68%);
+      filter: blur(8px);
+      animation: drift 14s ease-in-out infinite alternate;
+    }
+
+    .orb.one {
+      top: 12%;
+      right: 8%;
+    }
+
+    .orb.two {
+      width: 280px;
+      height: 280px;
+      left: 2%;
+      bottom: 12%;
+      animation-duration: 18s;
+      animation-delay: -4s;
+    }
+
+    .hero-content {
+      max-width: 970px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--teal);
+      background: rgba(0, 212, 184, 0.08);
+      border: 1px solid rgba(0, 212, 184, 0.2);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--teal);
+      box-shadow: 0 0 16px var(--teal);
+    }
+
+    .hero h1 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(4rem, 10vw, 7.8rem);
+      line-height: 0.94;
+      letter-spacing: -0.08em;
+      max-width: 950px;
+      margin-bottom: 26px;
+    }
+
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(28px);
+      animation: wordReveal 0.75s cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      color: var(--slate);
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      margin-bottom: 38px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--navy);
+      background: var(--teal);
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 0 0 rgba(0, 212, 184, 0.42);
+      animation: pulseGlow 2.2s infinite;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 38px rgba(0, 212, 184, 0.46);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(0, 212, 184, 0.12), rgba(255, 255, 255, 0.035));
+      box-shadow: var(--shadow);
+      margin-bottom: 70px;
+    }
+
+    .stat-item {
+      padding: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-item:last-child {
+      border-bottom: none;
+    }
+
+    .stat-number {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4.1rem);
+      font-weight: 800;
+      letter-spacing: -0.06em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: var(--slate);
+      font-weight: 700;
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .bio-card,
+    .tag-card,
+    .skill-card,
+    .timeline-content,
+    .project-card,
+    .contact-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .bio-card {
+      padding: clamp(26px, 4vw, 42px);
+    }
+
+    .bio-card p {
+      color: var(--slate);
+      font-size: 1.05rem;
+      margin-top: 16px;
+    }
+
+    .tag-card {
+      padding: clamp(22px, 4vw, 34px);
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag,
+    .skill-pill {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      color: var(--white);
+      font-weight: 700;
+      overflow: hidden;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .tag::after,
+    .skill-pill::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-110%);
+      background: linear-gradient(90deg, transparent, rgba(0, 212, 184, 0.22), transparent);
+      transition: transform 0.6s ease;
+    }
+
+    .tag:hover,
+    .skill-pill:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 212, 184, 0.48);
+      box-shadow: 0 0 26px rgba(0, 212, 184, 0.13);
+    }
+
+    .tag:hover::after,
+    .skill-pill:hover::after {
+      transform: translateX(110%);
+    }
+
+    .skills-grid {
+      display: grid;
+      gap: 22px;
+      margin-top: 44px;
+    }
+
+    .skill-card {
+      padding: 28px;
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 212, 184, 0.48);
+      box-shadow: 0 24px 76px rgba(0, 212, 184, 0.12);
+    }
+
+    .skill-icon,
+    .contact-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(0, 212, 184, 0.1);
+      border: 1px solid rgba(0, 212, 184, 0.22);
+      color: var(--teal);
+      margin-bottom: 24px;
+    }
+
+    .skill-card h3 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.45rem;
+      margin-bottom: 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-pill {
+      color: var(--slate);
+      font-size: 0.88rem;
+      padding: 8px 12px;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 26px;
+      margin-top: 50px;
+      padding-left: 26px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      left: 7px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--teal), rgba(0, 212, 184, 0.1));
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -26px;
+      top: 30px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 8px rgba(0, 212, 184, 0.1), 0 0 24px rgba(0, 212, 184, 0.5);
+    }
+
+    .timeline-content {
+      padding: 26px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateX(5px);
+      border-color: rgba(0, 212, 184, 0.35);
+    }
+
+    .timeline-top {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .timeline-content h3 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .role {
+      color: var(--teal);
+      font-weight: 800;
+    }
+
+    .date {
+      color: var(--slate);
+      font-size: 0.93rem;
+      font-weight: 700;
+    }
+
+    .timeline-content ul {
+      display: grid;
+      gap: 8px;
+      color: var(--slate);
+      padding-left: 18px;
+      list-style: disc;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: 22px;
+      margin-top: 48px;
+    }
+
+    .project-card {
+      position: relative;
+      padding: 28px;
+      overflow: hidden;
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), rgba(0, 212, 184, 0.12));
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px) scale(1.015);
+      border-color: rgba(0, 212, 184, 0.38);
+      box-shadow: 0 24px 72px rgba(0, 212, 184, 0.12);
+    }
+
+    .project-tag {
+      display: inline-flex;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(0, 212, 184, 0.1);
+      border: 1px solid rgba(0, 212, 184, 0.2);
+      color: var(--teal);
+      font-weight: 800;
+      font-size: 0.78rem;
+      margin-bottom: 18px;
+    }
+
+    .project-card h3 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: var(--slate);
+      margin-bottom: 22px;
+    }
+
+    .visit-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal);
+      font-weight: 900;
+    }
+
+    .visit-link span {
+      transition: transform 0.25s ease;
+    }
+
+    .visit-link:hover span {
+      transform: translateX(4px);
+    }
+
+    .contact-wrap {
+      display: grid;
+      gap: 26px;
+      margin-top: 42px;
+    }
+
+    .contact-card {
+      padding: clamp(26px, 5vw, 46px);
+      background: linear-gradient(135deg, rgba(0, 212, 184, 0.09), rgba(14, 29, 51, 0.86));
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      color: var(--slate);
+      font-weight: 700;
+    }
+
+    .contact-row .contact-icon {
+      flex: 0 0 auto;
+      margin: 0;
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+    }
+
+    .contact-row a:hover {
+      color: var(--teal);
+    }
+
+    .social-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .social-btn {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--teal);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 212, 184, 0.44);
+      box-shadow: 0 0 30px rgba(0, 212, 184, 0.16);
+    }
+
+    .footer {
+      padding: 34px 0;
+      color: var(--slate);
+      text-align: center;
+    }
+
+    .footer-divider {
+      width: min(100% - 36px, var(--container));
+      height: 1px;
+      margin: 0 auto 28px;
+      background: linear-gradient(90deg, transparent, rgba(0, 212, 184, 0.55), transparent);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes wordReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes drift {
+      from {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      to {
+        transform: translate3d(-42px, 32px, 0) scale(1.08);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 212, 184, 0.38), 0 0 28px rgba(0, 212, 184, 0.22);
+      }
+      50% {
+        box-shadow: 0 0 0 12px rgba(0, 212, 184, 0), 0 0 44px rgba(0, 212, 184, 0.42);
+      }
+    }
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    @media (min-width: 640px) {
+      .stats-strip {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stat-item {
+        border-bottom: none;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .stat-item:last-child {
+        border-right: none;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 860px) {
+      .nav-links,
+      .nav-cta {
+        display: inline-flex;
+      }
+
+      .mobile-menu-btn,
+      .mobile-menu {
+        display: none;
+      }
+
+      .about-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .timeline {
+        padding-left: 38px;
+      }
+
+      .timeline::before {
+        left: 10px;
+      }
+
+      .timeline-item::before {
+        left: -36px;
+      }
+    }
+
+    @media (min-width: 1040px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      :root {
+        --nav-height: 72px;
+      }
+
+      .section {
+        padding: 82px 0;
+      }
+
+      .container {
+        width: min(100% - 28px, var(--container));
+      }
+
+      .brand span:last-child {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.25rem, 17vw, 5.1rem);
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .hero-actions a {
+        width: 100%;
+      }
+
+      .stat-item,
+      .skill-card,
+      .timeline-content,
+      .project-card {
+        padding: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .word,
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a href="#hero" class="brand" aria-label="Imran Akbar Home">
+        <span class="brand-mark">IA</span>
+        <span>Imran Akbar</span>
+      </a>
+
+      <div class="nav-links" aria-label="Desktop navigation">
+        <a class="nav-link active" href="#hero">Home</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+
+      <a class="nav-cta" href="#contact">Hire Me</a>
+
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a class="nav-link active" href="#hero">Home</a>
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#skills">Skills</a>
+    <a class="nav-link" href="#experience">Experience</a>
+    <a class="nav-link" href="#projects">Projects</a>
+    <a class="nav-link" href="#contact">Contact</a>
+  </div>
+
+  <main>
+    <section class="hero section" id="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="orb one"></div>
+        <div class="orb two"></div>
+      </div>
+      <div class="container hero-content">
+        <p class="hero-kicker reveal">Performance Marketing Portfolio</p>
+        <h1 id="heroHeadline" aria-label="I Turn Clicks Into Customers.">I Turn Clicks Into Customers.</h1>
+        <p class="hero-subtitle reveal">Digital Marketer specializing in SEO, Google Ads &amp; Meta Ads — helping businesses grow organically and through paid performance.</p>
+        <div class="hero-actions reveal">
+          <a href="#projects" class="btn-primary">View My Work <span aria-hidden="true">→</span></a>
+          <a href="#contact" class="btn-secondary">Let's Talk</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-gradient" id="about">
+      <div class="container">
+        <div class="stats-strip reveal" id="stats">
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="4">0</span>+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="70">0</span>+</div>
+            <div class="stat-label">Clients Managed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="3">0</span></div>
+            <div class="stat-label">Niches: Local, eCommerce &amp; SaaS</div>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="bio-card reveal">
+            <p class="section-label">About</p>
+            <h2 class="section-title">A growth-focused marketer built for measurable results.</h2>
+            <p>Results-driven Digital Marketer with expertise in SEO, Google Ads, and Meta Ads. I help businesses improve visibility, attract qualified traffic, generate leads, and scale campaigns with clear KPIs, smart reporting, and conversion-focused execution.</p>
+            <p>My work blends organic growth, paid performance, content strategy, technical SEO, landing page optimization, and practical marketing operations for local businesses, eCommerce brands, and SaaS companies.</p>
+          </div>
+
+          <div class="tag-card reveal">
+            <p class="section-label">Core Toolset</p>
+            <div class="tag-cloud" aria-label="Skills tag cloud">
+              <span class="tag">SEO Strategy</span>
+              <span class="tag">Google Ads</span>
+              <span class="tag">Meta Ads</span>
+              <span class="tag">GA4</span>
+              <span class="tag">GSC</span>
+              <span class="tag">GTM</span>
+              <span class="tag">GBP</span>
+              <span class="tag">WordPress</span>
+              <span class="tag">CRO</span>
+              <span class="tag">Reporting</span>
+              <span class="tag">Keyword Research</span>
+              <span class="tag">Landing Pages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <p class="section-label reveal">Skills</p>
+        <h2 class="section-title reveal">Marketing systems that turn traffic into revenue.</h2>
+        <p class="section-copy reveal">From search visibility to paid acquisition, every skill is focused on building a measurable growth engine.</p>
+
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <div class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M10.5 18a7.5 7.5 0 1 1 5.6-2.5l3.2 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.8 10.9l1.8 1.8 3.8-4.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>SEO</h3>
+            <div class="skill-list">
+              <span class="skill-pill">On-Page SEO</span>
+              <span class="skill-pill">Technical SEO</span>
+              <span class="skill-pill">Off-Page SEO</span>
+              <span class="skill-pill">SEO Audits</span>
+              <span class="skill-pill">Keyword Research</span>
+              <span class="skill-pill">GSC / GA4 / GTM</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 15l3-4 3 2 4-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 7h1v1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Paid Ads</h3>
+            <div class="skill-list">
+              <span class="skill-pill">Google Ads</span>
+              <span class="skill-pill">Meta Ads</span>
+              <span class="skill-pill">Landing Page Creation</span>
+              <span class="skill-pill">CRO</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6.5 6.5h3v3h-3zM14.5 6.5h3v3h-3zM6.5 14.5h3v3h-3zM14.5 14.5h3v3h-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Marketing Ops</h3>
+            <div class="skill-list">
+              <span class="skill-pill">Content Writing</span>
+              <span class="skill-pill">Reporting</span>
+              <span class="skill-pill">KPI Tracking</span>
+              <span class="skill-pill">Google Business Profile</span>
+              <span class="skill-pill">WordPress</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-gradient" id="experience">
+      <div class="container">
+        <p class="section-label reveal">Work Experience</p>
+        <h2 class="section-title reveal">A proven path across SEO, ads, and growth teams.</h2>
+        <p class="section-copy reveal">Experience across agencies, healthcare, eCommerce, local services, and performance-driven marketing teams.</p>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-content">
+              <div class="timeline-top">
+                <h3>Byteforce IT Solutions</h3>
+                <span class="role">Digital Marketer</span>
+                <span class="date">March 2026 – Present</span>
+              </div>
+              <ul>
+                <li>Plan and execute SEO, paid ads, and growth campaigns for client accounts.</li>
+                <li>Track KPIs, prepare reports, and improve campaign performance through data-led decisions.</li>
+                <li>Support landing page, content, and conversion improvements for lead generation.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-content">
+              <div class="timeline-top">
+                <h3>BizScale Pvt Ltd</h3>
+                <span class="role">SEO Team Lead</span>
+                <span class="date">Apr 2024 – Feb 2026</span>
+              </div>
+              <ul>
+                <li>Managed 70+ client accounts across local, eCommerce, and service-based industries.</li>
+                <li>Led the SEO team with clear workflows for audits, content, technical fixes, and reporting.</li>
+                <li>Improved visibility by aligning keyword strategy, on-page SEO, and link-building priorities.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-content">
+              <div class="timeline-top">
+                <h3>VyxrLabs</h3>
+                <span class="role">Digital Marketer Part-time</span>
+                <span class="date">Jun – Dec 2025</span>
+              </div>
+              <ul>
+                <li>Worked on eCommerce SEO strategies to improve category, product, and blog visibility.</li>
+                <li>Supported Google Ads and Meta Ads campaigns for paid growth and retargeting.</li>
+                <li>Optimized landing pages and campaign structure for better conversion quality.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-content">
+              <div class="timeline-top">
+                <h3>Business Upscalers</h3>
+                <span class="role">SEO Executive</span>
+                <span class="date">Oct 2023 – Mar 2024</span>
+              </div>
+              <ul>
+                <li>Handled on-page SEO, off-page SEO, and technical optimization tasks.</li>
+                <li>Created keyword maps, metadata, content briefs, and optimization plans.</li>
+                <li>Supported audits and reporting to identify growth opportunities for client websites.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-content">
+              <div class="timeline-top">
+                <h3>Medi Serve Health Care</h3>
+                <span class="role">SEO &amp; Google Ads Executive</span>
+                <span class="date">Jan – Sep 2023</span>
+              </div>
+              <ul>
+                <li>Managed healthcare SEO tasks focused on local search visibility and service pages.</li>
+                <li>Supported Google Ads campaigns to generate patient and service inquiries.</li>
+                <li>Optimized Google Business Profile content, services, and local presence.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="section-label reveal">Projects</p>
+        <h2 class="section-title reveal">Selected client websites and growth work.</h2>
+        <p class="section-copy reveal">A snapshot of real projects across eCommerce, services, healthcare, and local business niches.</p>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <span class="project-tag">eCommerce</span>
+            <h3>Curren Watches</h3>
+            <p>SEO and visibility-focused work for an eCommerce watch brand.</p>
+            <a class="visit-link" href="https://currenwatches.com" target="_blank" rel="noopener">Visit Site <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="project-card reveal">
+            <span class="project-tag">Services</span>
+            <h3>Ezi Services</h3>
+            <p>Service-based growth work focused on search visibility, content, and local conversion.</p>
+            <a class="visit-link" href="https://ezi.services" target="_blank" rel="noopener">Visit Site <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="project-card reveal">
+            <span class="project-tag">eCommerce</span>
+            <h3>ME2 Beauty</h3>
+            <p>eCommerce marketing support for product visibility and organic growth.</p>
+            <a class="visit-link" href="https://me2beauty.com" target="_blank" rel="noopener">Visit Site <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="project-card reveal">
+            <span class="project-tag">Local Business</span>
+            <h3>GoKey Locksmith</h3>
+            <p>Local SEO and lead-focused digital marketing for locksmith services.</p>
+            <a class="visit-link" href="https://gokeylocksmith.com" target="_blank" rel="noopener">Visit Site <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="project-card reveal">
+            <span class="project-tag">Local Business</span>
+            <h3>Disciple D Movers</h3>
+            <p>Local service website marketing work for moving-related customer acquisition.</p>
+            <a class="visit-link" href="https://discipledmovers.com" target="_blank" rel="noopener">Visit Site <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-gradient" id="contact">
+      <div class="container">
+        <p class="section-label reveal">Contact</p>
+        <h2 class="section-title reveal">Let's Grow Your Business.</h2>
+        <p class="section-copy reveal">Need more qualified traffic, stronger campaigns, or a marketer who understands both SEO and paid performance? Reach out and start the conversation.</p>
+
+        <div class="contact-wrap">
+          <div class="contact-card reveal">
+            <div class="contact-list">
+              <div class="contact-row">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M7 4h3l1.5 4-2 1.3c1 2 2.2 3.2 4.2 4.2l1.3-2 4 1.5v3c0 1.1-.9 2-2 2C10.4 18.8 5.2 13.6 5 6c0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <a href="tel:+923224761747">+923224761747</a>
+              </div>
+
+              <div class="contact-row">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <a href="mailto:mimranakbar00@gmail.com">mimranakbar00@gmail.com</a>
+              </div>
+
+              <div class="contact-row">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4.7 7-11a7 7 0 1 0-14 0c0 6.3 7 11 7 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 10.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="2"/></svg>
+                </span>
+                <span>Lahore, Pakistan</span>
+              </div>
+            </div>
+
+            <div class="social-buttons" aria-label="Contact buttons">
+              <a class="social-btn" href="tel:+923224761747" aria-label="Call Imran Akbar">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M7 4h3l1.5 4-2 1.3c1 2 2.2 3.2 4.2 4.2l1.3-2 4 1.5v3c0 1.1-.9 2-2 2C10.4 18.8 5.2 13.6 5 6c0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a class="social-btn" href="mailto:mimranakbar00@gmail.com" aria-label="Email Imran Akbar">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a class="social-btn" href="#" aria-label="LinkedIn profile placeholder">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6.5 10v8M6.5 7v.1M11 18v-8m0 3.5c.5-2.2 5.5-3 5.5 1.3V18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-divider" aria-hidden="true"></div>
+    <div class="container">© 2026 Imran Akbar · Digital Marketer</div>
+  </footer>
+
+  <script>
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const navbar = document.getElementById('navbar');
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('main section[id]');
+
+    function handleNavbarScroll() {
+      navbar.classList.toggle('scrolled', window.scrollY > 18);
+    }
+
+    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+    handleNavbarScroll();
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mobileMenu.addEventListener('click', (event) => {
+      if (event.target.matches('a')) {
+        mobileMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    function activateNavLink(id) {
+      navLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+      });
+    }
+
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          activateNavLink(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-35% 0px -55% 0px',
+      threshold: 0
+    });
+
+    sections.forEach((section) => activeObserver.observe(section));
+
+    const headline = document.getElementById('heroHeadline');
+    const words = headline.textContent.trim().split(' ');
+    headline.innerHTML = words.map((word, index) => {
+      const safeWord = word.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return `<span class="word" style="animation-delay:${index * 0.13}s">${safeWord}</span>`;
+    }).join(' ');
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.13,
+      rootMargin: '0px 0px -70px 0px'
+    });
+
+    revealEls.forEach((el) => {
+      if (prefersReducedMotion) {
+        el.classList.add('visible');
+      } else {
+        revealObserver.observe(el);
+      }
+    });
+
+    const counters = document.querySelectorAll('.counter');
+    let countersStarted = false;
+
+    function animateCounter(counter) {
+      const target = Number(counter.dataset.target);
+      const duration = prefersReducedMotion ? 1 : 1450;
+      const startTime = performance.now();
+
+      function update(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = Math.floor(eased * target);
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          counter.textContent = target;
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    const statsObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !countersStarted) {
+          countersStarted = true;
+          counters.forEach(animateCounter);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+
+    const stats = document.getElementById('stats');
+    if (stats) statsObserver.observe(stats);
+  </script>
+</body>
+</html>
